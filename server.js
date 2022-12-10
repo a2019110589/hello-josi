@@ -1,7 +1,9 @@
 var express = require("express");
-var site = express();
+var fs = require("fs");
 
 var db = require("./db");
+
+var site = express();
 
 var server = site.listen(8080, function () {
   var host = server.address().address;
