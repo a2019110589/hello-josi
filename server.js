@@ -27,7 +27,7 @@ site.get("/", function (req, res) {
 
     html += "<ul>";
     for (var i = 0; i < result.length; i++) {
-      html += `<li><a href='/${result[i].TABLE_NAME.toLowerCase()}'>${
+      html += `<li><a href="/${result[i].TABLE_NAME.toLowerCase()}">${
         result[i].TABLE_NAME
       }</a></li>`;
     }
