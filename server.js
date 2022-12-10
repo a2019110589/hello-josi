@@ -18,3 +18,33 @@ fs.readFile("header.html", function (err, data) {
   if (err) throw err;
   header = data;
 });
+
+site.get("/", function (req, res) {
+  var html = "";
+  var query =
+    "SELECT table_name FROM information_schema.tables WHERE table_schema = 'a2019110589'";
+
+  db.query(query, function (err, result) {
+    if (err) throw err;
+
+    html += "<ul>";
+    for (var i = 0; i < result.length; i++) {
+      html += `<li><a href='/${result[i].TABLE_NAME.toLowerCase()}'>${
+        result[i].TABLE_NAME
+      }</a></li>`;
+    }
+    html += "</ul>";
+
+    res.send(
+      "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        header +
+        "</head>" +
+        "<body>" +
+        html +
+        "</body>" +
+        "</html>"
+    );
+  });
+});
