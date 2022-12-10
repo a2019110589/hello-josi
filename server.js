@@ -19,6 +19,8 @@ fs.readFile("header.html", function (err, data) {
 
 site.get("/", function (req, res) {
   var html = "";
+  html += header;
+
   var query =
     "SELECT table_name FROM information_schema.tables WHERE table_schema = 'a2019110589'";
 
@@ -33,16 +35,6 @@ site.get("/", function (req, res) {
     }
     html += "</ul>";
 
-    res.send(
-      "<!DOCTYPE html>" +
-        "<html>" +
-        "<head>" +
-        header +
-        "</head>" +
-        "<body>" +
-        html +
-        "</body>" +
-        "</html>"
-    );
+    res.send(html);
   });
 });
