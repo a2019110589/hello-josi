@@ -21,8 +21,11 @@ site.get("/", function (req, res) {
   var html = "";
   html += template;
 
-  var query =
-    "SELECT table_name FROM information_schema.tables WHERE table_schema = 'a2019110589'";
+  var totalVendasQuery = "SELECT SUM(preco_produto) AS total_vendas FROM Vendas INNER JOIN Vendas_Produtos USING (id_venda) INNER JOIN Produtos USING (id_produto)";
+  var produtosDisponiveisQuery = "SELECT count(id_produto) AS produtos_disponiveis FROM Produtos WHERE estado_produto = 'Disponível'";
+  var projetosDecorrerQuery = "SELECT count(id_projeto) AS projetos_decorrer FROM Projetos WHERE estado_projeto = 'A Decorrer'";
+
+  var query = `${totalVendasQuery};${produtosDisponiveisQuery};${projetosDecorrerQuery};`;
 
   db.query(query, function (err, result) {
     if (err) throw err;
