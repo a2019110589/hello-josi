@@ -11,15 +11,15 @@ var server = site.listen(8080, function () {
   console.log(host, port);
 });
 
-var header = "";
-fs.readFile("header.html", function (err, data) {
+var template = "";
+fs.readFile("template.html", function (err, data) {
   if (err) throw err;
-  header = data;
+  template = data;
 });
 
 site.get("/", function (req, res) {
   var html = "";
-  html += header;
+  html += template;
 
   var query =
     "SELECT table_name FROM information_schema.tables WHERE table_schema = 'a2019110589'";
