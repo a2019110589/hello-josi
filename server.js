@@ -17,6 +17,10 @@ fs.readFile("template.html", function (err, data) {
   template = data;
 });
 
+function formatarData(data) {
+  return data.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'});
+}
+
 site.get("/", function (req, res) {
   var html = "";
   html += template;
