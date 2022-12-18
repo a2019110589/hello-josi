@@ -29,7 +29,9 @@ site.get("/", function (req, res) {
   var produtosDisponiveisQuery = "SELECT count(id_produto) AS produtos_disponiveis FROM Produtos WHERE estado_produto = 'Disponível'";
   var projetosDecorrerQuery = "SELECT count(id_projeto) AS projetos_decorrer FROM Projetos WHERE estado_projeto = 'A Decorrer'";
 
-  var query = `${totalVendasQuery};${produtosDisponiveisQuery};${projetosDecorrerQuery};`;
+  var projetosQuery = "SELECT nome_projeto, nome_cliente, data_fim_projeto FROM Projetos INNER JOIN Clientes USING (id_cliente) WHERE estado_projeto = 'A Decorrer' ORDER BY data_fim_projeto LIMIT 3"
+
+  var query = `${totalVendasQuery};${produtosDisponiveisQuery};${projetosDecorrerQuery};${projetosQuery};`;
 
   db.query(query, function (err, result) {
     if (err) throw err;
