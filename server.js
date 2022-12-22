@@ -30,8 +30,9 @@ site.get("/", function (req, res) {
   var projetosDecorrerQuery = "SELECT count(id_projeto) AS projetos_decorrer FROM Projetos WHERE estado_projeto = 'A Decorrer'";
 
   var projetosQuery = "SELECT nome_projeto, nome_cliente, data_fim_projeto FROM Projetos INNER JOIN Clientes USING (id_cliente) WHERE estado_projeto = 'A Decorrer' ORDER BY data_fim_projeto LIMIT 3"
+  var clientesQuery = "SELECT nome_cliente, pais_cliente, SUM(preco_produto) AS total_vendas FROM Clientes INNER JOIN Vendas USING (id_cliente) INNER JOIN Vendas_Produtos USING (id_venda) INNER JOIN Produtos USING (id_produto) GROUP BY nome_cliente, pais_cliente ORDER BY total_vendas DESC LIMIT 3;"
 
-  var query = `${totalVendasQuery};${produtosDisponiveisQuery};${projetosDecorrerQuery};${projetosQuery};`;
+  var query = `${totalVendasQuery};${produtosDisponiveisQuery};${projetosDecorrerQuery};${projetosQuery};${clientesQuery}`;
 
   db.query(query, function (err, result) {
     if (err) throw err;
