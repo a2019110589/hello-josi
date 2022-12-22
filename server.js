@@ -32,7 +32,7 @@ site.get("/", function (req, res) {
   var projetosQuery = "SELECT nome_projeto, nome_cliente, data_fim_projeto FROM Projetos INNER JOIN Clientes USING (id_cliente) WHERE estado_projeto = 'A Decorrer' ORDER BY data_fim_projeto LIMIT 3"
   var clientesQuery = "SELECT nome_cliente, pais_cliente, SUM(preco_produto) AS total_vendas FROM Clientes INNER JOIN Vendas USING (id_cliente) INNER JOIN Vendas_Produtos USING (id_venda) INNER JOIN Produtos USING (id_produto) GROUP BY nome_cliente, pais_cliente ORDER BY total_vendas DESC LIMIT 3;"
 
-  var query = `${totalVendasQuery};${produtosDisponiveisQuery};${projetosDecorrerQuery};${projetosQuery};${clientesQuery}`;
+  var query = `${totalVendasQuery};${projetosDecorrerQuery};${produtosDisponiveisQuery};${projetosQuery};${clientesQuery}`;
 
   db.query(query, function (err, result) {
     if (err) throw err;
@@ -48,12 +48,12 @@ site.get("/", function (req, res) {
 
         html += "<div class='flex flex-col gap-2 bg-neutral-50 shadow-sm rounded px-6 py-4'>";
         html += "<h4 class='font-semibold text-neutral-400'>Projetos a Decorrer</h4>";
-        html += `<h1 class='text-3xl font-semibold'>${result[1][0].produtos_disponiveis}</h1>`;
+        html += `<h1 class='text-3xl font-semibold'>${result[1][0].projetos_decorrer}</h1>`;
         html += "</div>";
 
         html += "<div class='flex flex-col gap-2 bg-neutral-50 shadow-sm rounded px-6 py-4'>";
         html += "<h4 class='font-semibold text-neutral-400'>Produtos Disponíveis</h4>";
-        html += `<h1 class='text-3xl font-semibold'>${result[2][0].projetos_decorrer}</h1>`;
+        html += `<h1 class='text-3xl font-semibold'>${result[2][0].produtos_disponiveis}</h1>`;
         html += "</div>";
 
       html += "</div>";
