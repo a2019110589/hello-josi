@@ -61,7 +61,7 @@ site.get("/", function (req, res) {
       html += "<div class='grid grid-flow-col items-start gap-6'>";
 
         html += "<div class='flex flex-col gap-4 bg-neutral-50 shadow rounded px-6 py-4'>";
-          html += "<h4 class='font-semibold text-neutral-400 text-lg'>Próximos Projetos</h4>"
+          html += "<h4 class='font-semibold text-neutral-400'>Próximos Projetos</h4>"
           html += "<ul class='flex flex-col gap-4'>"
 
             html += "<li class='flex flex-col gap-2 p-2'>"
@@ -95,7 +95,7 @@ site.get("/", function (req, res) {
         html += "</div>"
 
         html += "<div class='flex flex-col gap-4 bg-neutral-50 shadow rounded px-6 py-4'>";
-          html += "<h4 class='font-semibold text-neutral-400 text-lg'>Melhores Clientes</h4>"
+          html += "<h4 class='font-semibold text-neutral-400'>Melhores Clientes</h4>"
           html += "<ul class='flex flex-col gap-4'>"
 
             html += "<li class='flex items-center justify-between gap-8 p-2'>"
