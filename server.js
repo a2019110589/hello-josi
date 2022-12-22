@@ -39,7 +39,7 @@ site.get("/", function (req, res) {
 
     html += "<main class='h-full col-span-9 flex flex-col gap-8 p-8'>";
       html += "<h1 class='text-3xl font-semibold'>Home</h1>";
-      html += "<div class='grid grid-flow-col gap-6'>";
+      html += "<div class='grid grid-flow-col items-start gap-6'>";
 
         html += "<div class='flex flex-col gap-2 bg-neutral-50 shadow rounded px-6 py-4'>";
         html += "<h4 class='font-semibold text-neutral-400'>Total de Vendas</h4>";
@@ -58,7 +58,7 @@ site.get("/", function (req, res) {
 
       html += "</div>";
 
-      html += "<div class='grid grid-flow-col gap-6'>";
+      html += "<div class='grid grid-flow-col items-start gap-6'>";
 
         html += "<div class='flex flex-col gap-4 bg-neutral-50 shadow-sm rounded px-6 py-4'>";
           html += "<h4 class='font-semibold text-neutral-400 text-lg'>Projetos</h4>"
