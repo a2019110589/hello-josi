@@ -141,3 +141,10 @@ site.get("/", function (req, res) {
     res.send(html);
   });
 });
+
+site.get("/clientes", function (req, res) {
+  var html = "";
+  html += template;
+
+  res.send(html);
+})
