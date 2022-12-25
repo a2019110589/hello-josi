@@ -253,7 +253,7 @@ site.get("/funcionarios", function (req, res) {
           html += "</tbody>"
         html += "</table>"
       } else {
-        html += "<p>Não foram encontrados clientes para mostrar!</p>"
+        html += "<p>Não foram encontrados funcionários para mostrar!</p>"
       }
     html += "</main>"
     
