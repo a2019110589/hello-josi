@@ -350,7 +350,12 @@ site.get("/projetos", function (req, res) {
             for (var i = 0; i < result.length; i++) {
               html += "<tr class='text-neutral-600 border-b border-neutral-100 hover:bg-neutral-100 transition'>"
                 html += `<td class='p-3'>${result[i].nome_projeto}</td>`
-                html += `<td class='p-3'>${result[i].nome_cliente}</td>`
+                html += "<td class='p-3'>"
+                  html += "<div class='flex items-center gap-2'>"
+                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_cliente}&background=random' alt='${result[i].nome_cliente}'`
+                    html += `<span>${result[i].nome_cliente}</span>`
+                  html += "</div>"
+                html += "</td>"
                 html += `<td class='p-3'>${formatarData(result[i].data_inicio_projeto)}</td>`
                 html += `<td class='p-3'>${formatarData(result[i].data_fim_projeto)}</td>`
                 html += "<td class='p-3'>"
