@@ -388,3 +388,60 @@ site.get("/projetos", function (req, res) {
     res.send(html);
   });
 });
+
+site.get("/vendas", function (req, res) {
+  var html = "";
+  html += template;
+
+  var query = "SELECT data_venda, hora_venda, nome_cliente, metodo_pagamento_venda FROM Vendas INNER JOIN Clientes USING (id_cliente)";
+
+  db.query(query, function (err, result) {
+    if (err) throw err;
+
+    html += "<main class='h-full col-span-9 flex flex-col gap-8 p-8'>";
+      html += "<h1 class='text-3xl font-semibold'>Vendas</h1>"
+      if (result && result.length > 0) {
+        html += "<table class='w-full shadow bg-neutral-50 rounded'>"
+          html += "<thead>"
+            html += "<tr class='border-b-2 border-neutral-100 text-left text-sm'>"
+              html += "<th class='font-semibold p-3'>Data de Venda</th>"
+              html += "<th class='font-semibold p-3'>Hora de Venda</th>"
+              html += "<th class='font-semibold p-3'>Cliente</th>"
+              html += "<th class='font-semibold p-3'>Método de Pagamento</th>"
+            html += "</tr>"
+          html += "</thead>"
+          html += "<tbody>"
+            for (var i = 0; i < result.length; i++) {
+              html += "<tr class='text-neutral-600 border-b border-neutral-100 hover:bg-neutral-100 transition'>"
+                html += `<td class='p-3'>${formatarData(result[i].data_venda)}</td>`
+                html += `<td class='p-3'>${result[i].hora_venda}</td>`
+                html += "<td class='p-3'>"
+                  html += "<div class='flex items-center gap-2'>"
+                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_cliente}&background=random' alt='${result[i].nome_cliente}'`
+                    html += `<span>${result[i].nome_cliente}</span>`
+                  html += "</div>"
+                html += "</td>"
+
+                html += `<td class='p-3'>${result[i].metodo_pagamento_venda}</td>`
+                html += "<td class='p-3'>"
+                  html += "<div class='flex items-center justify-end gap-4'>"
+                    html += "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-5 h-5 text-neutral-600 hover:text-blue-600 transition cursor-pointer'>"
+                      html += "<path stroke-linecap='round' stroke-linejoin='round' d='M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10' />"
+                    html += "</svg>"
+                    html += "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-5 h-5 text-neutral-600 hover:text-red-600 transition cursor-pointer'>"
+                      html += "<path stroke-linecap='round' stroke-linejoin='round' d='M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0' />"
+                    html += "</svg>"
+                  html += "</div>"
+                html += "</td>"
+              html += "</tr>"
+            }
+          html += "</tbody>"
+        html += "</table>"
+      } else {
+        html += "<p>Não foram encontradas vendas para mostrar!</p>"
+      }
+    html += "</main>"
+    
+    res.send(html);
+  });
+});
