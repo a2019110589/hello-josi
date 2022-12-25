@@ -124,9 +124,12 @@ site.get("/clientes", function (req, res) {
             for (var i = 0; i < result.length; i++) {
               html += "<tr class='text-neutral-600 border-b border-neutral-100 hover:bg-neutral-100 transition'>"
                 html += "<td class='p-3'>"
-                  html += "<div class='flex flex-col'>"
-                    html += `<span class='text-neutral-900'>${result[i].nome_cliente}</span>`
-                    html += `<span class='text-sm text-neutral-600'>${result[i].email_cliente}</span>`
+                  html += "<div class='flex items-center gap-3'>"
+                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_cliente}&background=random' alt='${result[i].nome_cliente}'>`
+                    html += "<div class='flex flex-col'>"
+                      html += `<span class='text-neutral-900'>${result[i].nome_cliente}</span>`
+                      html += `<span class='text-sm text-neutral-600'>${result[i].email_cliente}</span>`
+                    html += "</div>"
                   html += "</div>"
                 html += "</td>"
                 html += `<td class='p-3'>${result[i].telefone_cliente}</td>`
@@ -228,9 +231,12 @@ site.get("/funcionarios", function (req, res) {
             for (var i = 0; i < result.length; i++) {
               html += "<tr class='text-neutral-600 border-b border-neutral-100 hover:bg-neutral-100 transition'>"
                 html += "<td class='p-3'>"
-                  html += "<div class='flex flex-col'>"
-                    html += `<span class='text-neutral-900'>${result[i].nome_funcionario}</span>`
-                    html += `<span class='text-sm text-neutral-600'>${result[i].email_funcionario}</span>`
+                  html += "<div class='flex items-center gap-3'>"
+                    html += `<img class='w-8 h-8 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_funcionario}' alt='${result[i].nome_funcionario}'>`
+                    html += "<div class='flex flex-col'>"
+                      html += `<span class='text-neutral-900'>${result[i].nome_funcionario}</span>`
+                      html += `<span class='text-sm text-neutral-600'>${result[i].email_funcionario}</span>`
+                    html += "</div>"
                   html += "</div>"
                 html += "</td>"
                 html += `<td class='p-3'>${result[i].nome_departamento}</td>`
@@ -352,7 +358,7 @@ site.get("/projetos", function (req, res) {
                 html += `<td class='p-3'>${result[i].nome_projeto}</td>`
                 html += "<td class='p-3'>"
                   html += "<div class='flex items-center gap-2'>"
-                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_cliente}&background=random' alt='${result[i].nome_cliente}'`
+                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_cliente}&background=random' alt='${result[i].nome_cliente}'>`
                     html += `<span>${result[i].nome_cliente}</span>`
                   html += "</div>"
                 html += "</td>"
@@ -422,7 +428,7 @@ site.get("/vendas", function (req, res) {
                 html += `<td class='p-3'>${result[i].hora_venda}</td>`
                 html += "<td class='p-3'>"
                   html += "<div class='flex items-center gap-2'>"
-                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_cliente}&background=random' alt='${result[i].nome_cliente}'`
+                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_cliente}&background=random' alt='${result[i].nome_cliente}'>`
                     html += `<span>${result[i].nome_cliente}</span>`
                   html += "</div>"
                 html += "</td>"
