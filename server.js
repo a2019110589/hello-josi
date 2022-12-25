@@ -102,7 +102,7 @@ site.get("/clientes", function (req, res) {
   var html = "";
   html += template;
 
-  var query = "SELECT * FROM Clientes";
+  var query = "SELECT nome_cliente, email_cliente, telefone_cliente, morada_cliente, cidade_cliente, pais_cliente FROM Clientes";
 
   db.query(query, function (err, result) {
     if (err) throw err;
@@ -160,7 +160,7 @@ site.get("/departamentos", function (req, res) {
   var html = "";
   html += template;
 
-  var query = "SELECT * FROM Departamentos";
+  var query = "SELECT nome_departamento FROM Departamentos";
 
   db.query(query, function (err, result) {
     if (err) throw err;
