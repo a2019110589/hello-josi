@@ -65,7 +65,10 @@ site.get("/", function (req, res) {
                     html += `<small class='text-xs text-neutral-600 font-medium'>${formatarData(result[3][i].data_fim_projeto)}</small>`
                   html += "</div>"
                   html += `<h6 class='font-semibold'>${result[3][i].nome_projeto}</h6>`
-                  html += `<p class='text-sm text-neutral-600'>${result[3][i].nome_cliente}</p>`
+                  html += "<div class='flex items-center gap-2'>"
+                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[3][i].nome_cliente}&background=random' alt='${result[3][i].nome_cliente}'>`
+                    html += `<span>${result[3][i].nome_cliente}</span>`
+                  html += "</div>"
                 html += "</li>"
               }
             html += "</ul>"
