@@ -238,7 +238,7 @@ site.get("/funcionarios", function (req, res) {
               html += "<tr class='text-neutral-600 border-b border-neutral-100 hover:bg-neutral-100 transition'>"
                 html += "<td class='p-3'>"
                   html += "<div class='flex items-center gap-3'>"
-                    html += `<img class='w-8 h-8 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_funcionario}' alt='${result[i].nome_funcionario}'>`
+                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[i].nome_funcionario}' alt='${result[i].nome_funcionario}'>`
                     html += "<div class='flex flex-col'>"
                       html += `<span class='text-neutral-900'>${result[i].nome_funcionario}</span>`
                       html += `<span class='text-sm text-neutral-600'>${result[i].email_funcionario}</span>`
