@@ -73,40 +73,15 @@ site.get("/", function (req, res) {
         html += "<div class='flex flex-col gap-4 bg-neutral-50 shadow rounded px-6 py-4'>";
           html += "<h4 class='font-semibold text-neutral-400'>Melhores Clientes</h4>"
           html += "<ul class='flex flex-col gap-4'>"
-
-            html += "<li class='flex items-center justify-between gap-8 p-2'>"
-              html += "<div class='flex flex-col gap-1'>"
-                html += `<h6 class='font-semibold'>${result[4][0].nome_cliente}</h6>`
-                html += "<div class='flex items-center gap-2'>"
-                  html += `<img crossorigin class='w-4' src="https://countryflagsapi.com/svg/${result[4][0].pais_cliente.toLowerCase()}" alt="${result[4][0].pais_cliente}"/>`
-                  html += `<p class='text-sm text-neutral-600'>${result[4][0].pais_cliente}</p>`
+            for (var i = 0; i < result[4].length; i++) {
+              html += "<li class='flex items-center justify-between gap-8 p-2'>"
+                html += "<div class='flex flex-col gap-1'>"
+                  html += `<h6 class='font-semibold'>${result[4][i].nome_cliente}</h6>`
+                  html += `<p class='text-sm text-neutral-600'>${result[4][i].pais_cliente}</p>`
                 html += "</div>"
-              html += "</div>"
-              html += `<h5 class='bg-green-100 text-green-600 py-1 px-2 rounded-full font-semibold'>${result[4][0].total_vendas.toFixed(2)} €</h5>`
-            html += "</li>"
-
-            html += "<li class='flex items-center justify-between gap-8 p-2'>"
-              html += "<div class='flex flex-col gap-1'>"
-                html += `<h6 class='font-semibold'>${result[4][1].nome_cliente}</h6>`
-                html += "<div class='flex items-center gap-2'>"
-                  html += `<img crossorigin class='w-4' src="https://countryflagsapi.com/svg/${result[4][1].pais_cliente.toLowerCase()}" alt="${result[4][1].pais_cliente}"/>`
-                  html += `<p class='text-sm text-neutral-600'>${result[4][1].pais_cliente}</p>`
-                html += "</div>"
-              html += "</div>"
-              html += `<h5 class='bg-green-100 text-green-600 py-1 px-2 rounded-full font-semibold'>${result[4][1].total_vendas.toFixed(2)} €</h5>`
-            html += "</li>"
-
-            html += "<li class='flex items-center justify-between gap-8 p-2'>"
-              html += "<div class='flex flex-col gap-1'>"
-                html += `<h6 class='font-semibold'>${result[4][2].nome_cliente}</h6>`
-                html += "<div class='flex items-center gap-2'>"
-                  html += `<img crossorigin class='w-4' src="https://countryflagsapi.com/svg/${result[4][2].pais_cliente.toLowerCase()}" alt="${result[4][2].pais_cliente}"/>`
-                  html += `<p class='text-sm text-neutral-600'>${result[4][2].pais_cliente}</p>`
-                html += "</div>"
-              html += "</div>"
-              html += `<h5 class='bg-green-100 text-green-600 py-1 px-2 rounded-full font-semibold'>${result[4][2].total_vendas.toFixed(2)} €</h5>`
-            html += "</li>"
-
+                html += `<h5 class='bg-green-100 text-green-600 py-1 px-2 rounded-full font-semibold'>${result[4][i].total_vendas.toFixed(2)} €</h5>`
+              html += "</li>"
+            }
           html += "</ul>"
         html += "</div>"
 
