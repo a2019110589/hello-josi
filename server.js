@@ -82,9 +82,12 @@ site.get("/", function (req, res) {
             html += "<ul class='flex flex-col gap-4'>"
               for (var i = 0; i < result[4].length; i++) {
                 html += "<li class='flex items-center justify-between gap-8 p-2'>"
-                  html += "<div class='flex flex-col gap-1'>"
-                    html += `<h6 class='font-semibold'>${result[4][i].nome_cliente}</h6>`
-                    html += `<p class='text-sm text-neutral-600'>${result[4][i].pais_cliente}</p>`
+                  html += "<div class='flex items-center gap-3'>"
+                    html += `<img class='w-6 h-6 rounded-full' src='https://ui-avatars.com/api/?name=${result[4][i].nome_cliente}&background=random' alt='${result[4][i].nome_cliente}'>`
+                    html += "<div class='flex flex-col'>"
+                      html += `<span class='text-neutral-900'>${result[4][i].nome_cliente}</span>`
+                      html += `<span class='text-sm text-neutral-600'>${result[4][i].pais_cliente}</span>`
+                    html += "</div>"
                   html += "</div>"
                   html += `<h5 class='bg-green-100 text-green-600 py-1 px-2 rounded-full font-semibold'>${result[4][i].total_vendas.toFixed(2)} €</h5>`
                 html += "</li>"
