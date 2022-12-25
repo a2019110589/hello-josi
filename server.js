@@ -57,34 +57,16 @@ site.get("/", function (req, res) {
         html += "<div class='flex flex-col gap-4 bg-neutral-50 shadow rounded px-6 py-4'>";
           html += "<h4 class='font-semibold text-neutral-400'>Próximos Projetos</h4>"
           html += "<ul class='flex flex-col gap-4'>"
-
-            html += "<li class='flex flex-col gap-2 p-2'>"
-            html += "<div class='flex items-center gap-2'>"
-            html += "<div class='w-2 h-2 bg-orange-600 rounded-full'></div>"
-            html += `<small class='text-xs text-neutral-600 font-medium'>${formatarData(result[3][0].data_fim_projeto)}</small>`
-            html += "</div>"
-            html += `<h6 class='font-semibold'>${result[3][0].nome_projeto}</h6>`
-            html += `<p class='text-sm text-neutral-600'>${result[3][0].nome_cliente}</p>`
-            html += "</li>"
-
-            html += "<li class='flex flex-col gap-2 p-2'>"
-            html += "<div class='flex items-center gap-2'>"
-            html += "<div class='w-2 h-2 bg-green-600 rounded-full'></div>"
-            html += `<small class='text-xs text-neutral-600 font-medium'>${formatarData(result[3][1].data_fim_projeto)}</small>`
-            html += "</div>"
-            html += `<h6 class='font-semibold'>${result[3][1].nome_projeto}</h6>`
-            html += `<p class='text-sm text-neutral-600'>${result[3][1].nome_cliente}</p>`
-            html += "</li>"
-
-            html += "<li class='flex flex-col gap-2 p-2'>"
-            html += "<div class='flex items-center gap-2'>"
-            html += "<div class='w-2 h-2 bg-green-600 rounded-full'></div>"
-            html += `<small class='text-xs text-neutral-600 font-medium'>${formatarData(result[3][2].data_fim_projeto)}</small>`
-            html += "</div>"
-            html += `<h6 class='font-semibold'>${result[3][2].nome_projeto}</h6>`
-            html += `<p class='text-sm text-neutral-600'>${result[3][2].nome_cliente}</p>`
-            html += "</li>"
-
+            for (var i = 0; i < result[3].length; i++) {
+              html += "<li class='flex flex-col gap-2 p-2'>"
+                html += "<div class='flex items-center gap-2'>"
+                  html += "<div class='w-2 h-2 bg-green-600 rounded-full'></div>"
+                  html += `<small class='text-xs text-neutral-600 font-medium'>${formatarData(result[3][i].data_fim_projeto)}</small>`
+                html += "</div>"
+                html += `<h6 class='font-semibold'>${result[3][i].nome_projeto}</h6>`
+                html += `<p class='text-sm text-neutral-600'>${result[3][i].nome_cliente}</p>`
+              html += "</li>"
+            }
           html += "</ul>"
         html += "</div>"
 
