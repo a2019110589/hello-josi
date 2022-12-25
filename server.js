@@ -56,32 +56,40 @@ site.get("/", function (req, res) {
       html += "<div class='grid grid-flow-col items-start gap-6'>";
         html += "<div class='flex flex-col gap-4 bg-neutral-50 shadow rounded px-6 py-4'>";
           html += "<h4 class='font-semibold text-neutral-400'>Próximos Projetos</h4>"
-          html += "<ul class='flex flex-col gap-4'>"
-            for (var i = 0; i < result[3].length; i++) {
-              html += "<li class='flex flex-col gap-2 p-2'>"
-                html += "<div class='flex items-center gap-2'>"
-                  html += "<div class='w-2 h-2 bg-green-600 rounded-full'></div>"
-                  html += `<small class='text-xs text-neutral-600 font-medium'>${formatarData(result[3][i].data_fim_projeto)}</small>`
-                html += "</div>"
-                html += `<h6 class='font-semibold'>${result[3][i].nome_projeto}</h6>`
-                html += `<p class='text-sm text-neutral-600'>${result[3][i].nome_cliente}</p>`
-              html += "</li>"
-            }
-          html += "</ul>"
+          if (result && result.length > 0) {
+            html += "<ul class='flex flex-col gap-4'>"
+              for (var i = 0; i < result[3].length; i++) {
+                html += "<li class='flex flex-col gap-2 p-2'>"
+                  html += "<div class='flex items-center gap-2'>"
+                    html += "<div class='w-2 h-2 bg-green-600 rounded-full'></div>"
+                    html += `<small class='text-xs text-neutral-600 font-medium'>${formatarData(result[3][i].data_fim_projeto)}</small>`
+                  html += "</div>"
+                  html += `<h6 class='font-semibold'>${result[3][i].nome_projeto}</h6>`
+                  html += `<p class='text-sm text-neutral-600'>${result[3][i].nome_cliente}</p>`
+                html += "</li>"
+              }
+            html += "</ul>"
+          } else {
+            html += "<p>Não existem próximos projetos!</p>"
+          }
         html += "</div>"
         html += "<div class='flex flex-col gap-4 bg-neutral-50 shadow rounded px-6 py-4'>";
           html += "<h4 class='font-semibold text-neutral-400'>Melhores Clientes</h4>"
-          html += "<ul class='flex flex-col gap-4'>"
-            for (var i = 0; i < result[4].length; i++) {
-              html += "<li class='flex items-center justify-between gap-8 p-2'>"
-                html += "<div class='flex flex-col gap-1'>"
-                  html += `<h6 class='font-semibold'>${result[4][i].nome_cliente}</h6>`
-                  html += `<p class='text-sm text-neutral-600'>${result[4][i].pais_cliente}</p>`
-                html += "</div>"
-                html += `<h5 class='bg-green-100 text-green-600 py-1 px-2 rounded-full font-semibold'>${result[4][i].total_vendas.toFixed(2)} €</h5>`
-              html += "</li>"
-            }
-          html += "</ul>"
+          if (result && result.length > 0) {
+            html += "<ul class='flex flex-col gap-4'>"
+              for (var i = 0; i < result[4].length; i++) {
+                html += "<li class='flex items-center justify-between gap-8 p-2'>"
+                  html += "<div class='flex flex-col gap-1'>"
+                    html += `<h6 class='font-semibold'>${result[4][i].nome_cliente}</h6>`
+                    html += `<p class='text-sm text-neutral-600'>${result[4][i].pais_cliente}</p>`
+                  html += "</div>"
+                  html += `<h5 class='bg-green-100 text-green-600 py-1 px-2 rounded-full font-semibold'>${result[4][i].total_vendas.toFixed(2)} €</h5>`
+                html += "</li>"
+              }
+            html += "</ul>"
+          } else {
+            html += "<p>Não existem melhores clientes!</p>"
+          }
         html += "</div>"
       html += "</div>";
     html += "</main>";
