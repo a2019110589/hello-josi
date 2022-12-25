@@ -69,7 +69,6 @@ site.get("/", function (req, res) {
             }
           html += "</ul>"
         html += "</div>"
-
         html += "<div class='flex flex-col gap-4 bg-neutral-50 shadow rounded px-6 py-4'>";
           html += "<h4 class='font-semibold text-neutral-400'>Melhores Clientes</h4>"
           html += "<ul class='flex flex-col gap-4'>"
@@ -84,9 +83,7 @@ site.get("/", function (req, res) {
             }
           html += "</ul>"
         html += "</div>"
-
       html += "</div>";
-
     html += "</main>";
 
     res.send(html);
